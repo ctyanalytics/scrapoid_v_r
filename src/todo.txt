@@ -1,0 +1,13 @@
+
+
+{ i:0,state=NULL} => {i:1; props : { type_card:"intro", text:"Hello", choices="Hi back"}  }
+{ i:1,state="Hi back"} => {i:2; props : { type_card:"Discussion", text:"What do you want ? ", choices=["this","that"]}  }
+{ i:2,state="This"} => {i:3; props : { type_card:"Discussion", text:"Here is This ", choices=["Quit"]}  }
+{ i:2,state="That"} => {i:3; props : { type_card:"Discussion", text:"Here is That ", choices=["Quit"]}  }
+{ i:3,state="Quit"} => {i:0; props : { type_card:"intro", text:"Hello", choices="Hi back"}  }
+
+
+                                
+  const states = [ { i:0,state=NULL} , { i:1,state="Hi back"} ]   
+  const transitions = [{i:1; props : { type_card:"intro", text:"Hello", choices="Hi back"} ,
+  {i:2; props : { type_card:"Discussion", text:"What do you want ? ", choices=["this","that"]}  } ]                                 
