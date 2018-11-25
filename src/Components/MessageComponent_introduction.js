@@ -1,7 +1,6 @@
-import React, { Component , Icon} from 'react'
-import {Message} from 'semantic-ui-react';
-import BuzzedComponent from './BuzzedComponent.js';
+import React, { Component } from 'react'
 import Scroll from 'react-scroll';
+import GetData from '../Data/GetData.js'
 
 export default class MessageComponent_introduction extends Component {
   
@@ -16,7 +15,6 @@ export default class MessageComponent_introduction extends Component {
     var scroll     = Scroll.animateScroll;
     scroll.scrollToBottom();
     
-    
 }
  
   
@@ -24,7 +22,7 @@ export default class MessageComponent_introduction extends Component {
    
     this.setState({fieldVal:event.currentTarget.textContent});
     this.props.onUpdate(event.currentTarget.textContent);
-   
+    console.log(GetData());
     
    
    
@@ -32,6 +30,7 @@ export default class MessageComponent_introduction extends Component {
     render() {
       if ((this.props.elem_loading) !==undefined) { this.props.elem_loading.style.display="none";}
       return (
+        <div className="Container_messages">
               <div className="ui centered card" >
           
                           <div className="image">
@@ -42,7 +41,7 @@ export default class MessageComponent_introduction extends Component {
                           
                           <div className="content">
                         
-                              <a className="header">{this.props.text}</a>
+                              <a className="header" >{this.props.text}</a>
                             
                           </div>
 
@@ -61,6 +60,7 @@ export default class MessageComponent_introduction extends Component {
                                         </div>
                     
                       
+              </div>
               </div>
         
       );

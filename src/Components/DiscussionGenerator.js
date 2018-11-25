@@ -8,9 +8,9 @@ import React from 'react';
 import ListComponent from './ListComponents.js';
 import MessageComponent_introduction from './MessageComponent_introduction';
 import MessageComponent_discussion from './MessageComponent_discussion';
+import MessageComponent_show from './MessageComponent_show';
 import MessageComponent_input from './MessageComponent_input';
 import Container from './Container.css';
-
 
 
 
@@ -18,16 +18,20 @@ import Container from './Container.css';
 const states = [ { i:0, state:"null"} , 
                  {i:1, state:"Let's get started"} ,
                  {i:2, state:"This"},
-                 {i:2, state:"That"}
+                 {i:2, state:"That"},
+                 {i:3, state:"input"},
+                 {i:3, state:"input"},
                 ]   
 const transitions = [ {i:1, props : { type_card:"intro", text:"Hello I am scrapoid, I can scrap websites for you !", choices:["Let's get started"]}} ,
                       {i:2, props : { type_card:"discussion", text:"What do you want ? ", choices:["This","That"]}  } ,
                       {i:3, props : { type_card:"input", text:"Ok please give me This"}  },
-                      {i:3, props : { type_card:"input", text:"Ok please give me that"}  }
+                      {i:3, props : { type_card:"input", text:"Ok please give me that"}  },
+                      {i:4, props : { type_card:"show", text:"Here you go !" ,choices:["1","2"]}} ,
+                      {i:4, props : { type_card:"show", text:"Here you go !" ,choices:["1","2"]} }
                 
                 ]
 
-var _state_=         _state_ = {
+var _state_ = {
         items : {
                      },
        iteration: 0,
@@ -111,6 +115,23 @@ class DiscussionGenerator extends React.Component
                                                 );
                                 }
 
+
+                             
+                                if  (_props_.type_card=='show') {  
+                                   
+                                        var item=  (
+                                                <div>
+                                                        <MessageComponent_show
+                                                          text={_props_.text}
+                                                          choices={_props_.choices}
+                                                          onUpdate={this.onUpdate} 
+                                                           ></MessageComponent_show> 
+                                                </div>
+                                                );
+                                }
+
+
+
                                 if  (_props_.type_card=='input') {  
                                    
                                         var item=  (
@@ -144,15 +165,11 @@ class DiscussionGenerator extends React.Component
 
        onUpdate = (val) => {
         
-
+        console.log(this.refs.modal_ref);
         _state_.current_state=val;
    
           this.generate_card(_state_.iteration,_state_.current_state);
-       
-         
-        
-      
-      
+
        
        };
  
@@ -160,8 +177,11 @@ class DiscussionGenerator extends React.Component
 render() {
             return (
                     <div className="Container">
+                       
                          < ListComponent   items={_state_.items} />
                     </div>
+                    
+                     
             );
          }
 }

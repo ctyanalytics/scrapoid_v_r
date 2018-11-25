@@ -16,8 +16,8 @@ class Delayed extends React.Component {
 
     render() {
         return (
-            <div>
-            <div ref="loading_elem" className="ui placeholder">
+            <div class="ui inverted segment">
+            <div ref="loading_elem" className="ui inverted placeholder">
                     <div className="image header">
                     <div className="line"></div>
                     <div className="line"></div>

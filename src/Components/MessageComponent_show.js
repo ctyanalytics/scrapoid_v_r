@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import BuzzedComponent from './BuzzedComponent.js';
 import Delayed from './Delayed.js';
 import Scroll from 'react-scroll';
+import Container_messages from './Container_messages.css';
 
-export default class MessageComponent_discussion extends Component {
+export default class MessageComponent_show extends Component {
     constructor(props) {
         super(props);
        
@@ -13,6 +14,8 @@ export default class MessageComponent_discussion extends Component {
 
       
       }
+   
+    
 
       componentDidMount() {
         var scroll     = Scroll.animateScroll;
@@ -20,10 +23,10 @@ export default class MessageComponent_discussion extends Component {
     }
 
       
-      update = (event) => {
-  
-        this.setState({fieldVal:"input"});
-        this.props.onUpdate("input");
+    update = (event) => {
+   
+        this.setState({fieldVal:event.currentTarget.textContent});
+        this.props.onUpdate(event.currentTarget.textContent);
       
  
         
@@ -40,16 +43,27 @@ export default class MessageComponent_discussion extends Component {
        return(
          
         <Delayed waitBeforeShow={1000}>
- <div className="Container_messages">
+        <div className="Container_messages">
         <div className="ui card" >
             <div className="content">
                     <div className="center aligned header">{this.props.text}</div>
                     <div className="center aligned description">
                     < BuzzedComponent animation="jiggle"  duration={1000}>
                                      <div className="extra content">
-                                       <div className="ui action input">
-                                            <input type="text" placeholder="ask me..."/>
-                                            <div  className="ui  black button"   onClick={this.update} >Send</div>
+                                     <div >
+                                   
+                                       
+                                            {this.props.choices.map((choice, index)=>{
+                                              return (
+                                               
+                                              <div className="ui  black button"  key={ index }
+                                                onClick={this.update}>{choice}</div>
+                                           
+                                              )
+                                            })}
+                                          
+                                           
+                                          
                                             </div>
                                         </div>
                                         </BuzzedComponent>
@@ -61,9 +75,11 @@ export default class MessageComponent_discussion extends Component {
                         </div>
             </div>
      
+      
       </div>
       </div>
       </Delayed>
+
     
        )
     }

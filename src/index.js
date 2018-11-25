@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DiscussionGenerator from './Components/DiscussionGenerator.js';
-
-
+import DashBoardScrapoidComponent from './Components/DashBoardScrapoidComponent.js';
+import DashboardComponent from './Components/DashboardComponent.js';
 
 
 
 ReactDOM.render(
-  
-        <DiscussionGenerator />
-,
+       <DashboardComponent></DashboardComponent>,
     document.querySelector('#root'));

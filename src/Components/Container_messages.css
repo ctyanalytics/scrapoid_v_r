@@ -1,0 +1,9 @@
+.Container_messages:hover {opacity: 0.9}
+
+.Container_messages {
+ 
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+  }
