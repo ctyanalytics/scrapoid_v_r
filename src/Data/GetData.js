@@ -1,22 +1,24 @@
 import axios from 'axios'
 
-const GetData =  ()  =>
-{ 
-    var url ='http://www.ctyanalytics.com/scrapoid_answer/';
-
-        const get_request = ()=>
+const GetData =  async  (current_data)  =>
+{   var response=null;
+    
+       
+        const get_request = async  ()=>
         {   
-            const response =   axios.get(
-            url,
+           
+         response =  await axios.get(
+            current_data.url,
             {
-                params : {message :'test', step :'url',url:'url'}
+                params : {iteration:current_data.iteration,
+                          current_state:current_data.current_state,
+                          short_term_memory:current_data.short_term_memory
+                        }
             }
-            ).then( ()=> { return response});
-
-        
-            
-            
+         );
+         return response.data;
         }
+   
    return get_request();
 }
 

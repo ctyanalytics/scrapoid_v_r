@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import BuzzedComponent from './BuzzedComponent.js';
 import Delayed from './Delayed.js';
 import Scroll from 'react-scroll';
-
+var current_input=""
 export default class MessageComponent_discussion extends Component {
     constructor(props) {
         super(props);
@@ -10,8 +10,6 @@ export default class MessageComponent_discussion extends Component {
         this.state = {
           fieldVal: "init"
         }
-
-      
       }
 
       componentDidMount() {
@@ -22,12 +20,18 @@ export default class MessageComponent_discussion extends Component {
       
       update = (event) => {
   
-        this.setState({fieldVal:"input"});
-        this.props.onUpdate("input");
-      
+        this.setState({fieldVal: current_input});
+        this.props.onUpdate(current_input);
+       
  
         
      
+      };
+
+      update_value = (event) => {
+  
+        current_input=event.currentTarget.value;
+    
       };
 
      
@@ -47,8 +51,8 @@ export default class MessageComponent_discussion extends Component {
                     <div className="center aligned description">
                     < BuzzedComponent animation="jiggle"  duration={1000}>
                                      <div className="extra content">
-                                       <div className="ui action input">
-                                            <input type="text" placeholder="ask me..."/>
+                                       <div className="ui action input" >
+                                            <input type="text" placeholder="your url here ..." onChange={this.update_value}/>
                                             <div  className="ui  black button"   onClick={this.update} >Send</div>
                                             </div>
                                         </div>

@@ -26,7 +26,7 @@ export default class MessageComponent_show extends Component {
     update = (event) => {
    
         this.setState({fieldVal:event.currentTarget.textContent});
-        this.props.onUpdate(event.currentTarget.textContent);
+        this.props.onShow(event.currentTarget.textContent);
       
  
         

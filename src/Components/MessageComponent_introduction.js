@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Scroll from 'react-scroll';
-import GetData from '../Data/GetData.js'
+
 
 export default class MessageComponent_introduction extends Component {
   
@@ -18,11 +18,11 @@ export default class MessageComponent_introduction extends Component {
 }
  
   
-  update = (event) => {
+  update = async (event) => {
    
     this.setState({fieldVal:event.currentTarget.textContent});
     this.props.onUpdate(event.currentTarget.textContent);
-    console.log(GetData());
+   
     
    
    
